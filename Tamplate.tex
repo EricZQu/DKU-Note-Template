@@ -1,0 +1,153 @@
+\documentclass[twocolumn]{article}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{nccmath} % ceqn env
+\usepackage[a4paper, total={6.8in, 10in}]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{floatrow}
+\usepackage{listings}
+% Table float box with bottom caption, box width adjusted to content
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+% Code
+\usepackage{setspace}
+\usepackage{pythonhighlight}
+
+% Header
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{accents}
+\pagestyle{fancy}
+\setlength{\headheight}{35pt}
+\setlength{\footskip}{25pt}
+
+% Solution Env
+%\usepackage[inline]{solutions}
+
+\usepackage{bbold}
+
+\newlength\Colsep
+\setlength\Colsep{10pt}
+
+\graphicspath{ {./} }
+\linespread{1.25}
+\renewcommand{\arraystretch}{1}
+%\newcommand{\x}{\ensuremath{\boldsymbol{x}}}
+
+% Title Size
+\usepackage{sectsty}
+\sectionfont{\large}
+\subsectionfont{\large}
+\subsubsectionfont{\large}
+\paragraphfont{\large}
+
+% DKU Color
+\definecolor{DKUDarkBlue}{RGB}{4,67,132}
+\definecolor{DKULightBlue}{RGB}{76,124,148}
+\definecolor{DKUGray}{RGB}{148,180,180}
+\definecolor{DKUDarkGreen}{RGB}{4,116,68}
+\definecolor{DKULightGreen}{RGB}{111,188,78}
+
+% hyper ref
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={DKUDarkBlue},
+    citecolor={DKUDarkBlue},
+    urlcolor={DKUDarkBlue}
+}
+
+%Theorem Env
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within=section]{defi}{Definition}%
+{colframe=DKUDarkGreen, fonttitle=\bfseries}{df}
+%{colback=white,colframe=bluegreen,fonttitle=\bfseries}{th}
+\newtcbtheorem[use counter from=defi, number within=section]{lem}{Lemma}%
+{colframe=DKULightGreen, fonttitle=\bfseries}{le}
+%{colback=white,colframe=bluegreen,fonttitle=\bfseries}{th}
+\newtcbtheorem[use counter from=defi, number within=section]{thm}{Theorem}%
+{colframe=DKUDarkGreen, fonttitle=\bfseries}{th}
+%{colback=white,colframe=bluegreen,fonttitle=\bfseries}{th}
+\newtcbtheorem[use counter from=defi, number within=section]{cor}{Corollary}%
+{colframe=DKUDarkBlue, fonttitle=\bfseries}{co}
+%{colback=white,colframe=bluegreen,fonttitle=\bfseries}{th}
+
+% Section box
+\usepackage[explicit]{titlesec}
+\usepackage{tikz}
+\titleformat{\section}
+    [hang]
+    {\Large\bfseries}
+    {}
+    {5pt}
+    {\begin{tikzpicture}[overlay]
+    \draw[fill=DKUDarkGreen, rounded corners=2mm,anchor=south west] (-5pt,-5pt) node{\Large\bfseries\textcolor{white}{\thesection\ #1}} rectangle (\columnwidth-5,17pt); \end{tikzpicture}}
+
+\titleformat{\subsection}
+    [hang]
+    {\large\bfseries}
+    {}
+    {5pt}
+    {\begin{tikzpicture}[overlay]
+    \draw[fill=DKUDarkBlue, rounded corners=2mm,anchor=south west] (-5pt,-5pt) node{\large\bfseries\textcolor{white}{\thesubsection\ #1}} rectangle (\columnwidth-5,16pt); \end{tikzpicture}}
+
+\newcommand{\note}{\fcolorbox{red}{white}{\textbf{Note}} }
+\newcommand{\coro}{\fcolorbox{red}{white}{\textbf{Corollary}} }
+
+\newcommand{\rbox}[1]{\fcolorbox{black}{white}{\textbf{#1}}}
+
+\newenvironment{proof}{{\large {\textit{Proof.}}}}{\hfill$\square$}
+%\newenvironment{proof}{{\large \textbf{Proof:}}}{\hfill$\square$}
+
+% Equation Spacing
+\AtBeginDocument{
+\addtolength{\abovedisplayskip}{-1ex}
+\addtolength{\abovedisplayshortskip}{-1ex}
+\addtolength{\belowdisplayskip}{-1ex}
+\addtolength{\belowdisplayshortskip}{-1ex}
+}
+
+\begin{document}
+\lhead{\includegraphics[width=4cm]{figures/DKU_logo_full.png}} 
+\rhead{Short Name Fall 20XX \\ Full Name \\ Class Note} 
+
+%\cfoot{\scriptsize \copyright $\ $ Taught by Marcus C. Werner, Associate Professor of Mathematics, Duke Kunshan University. \\ Note by Eric Qu (zq32). \textbf{Page \thepage \ of \pageref{LastPage}}}
+\cfoot{\scriptsize \copyright $\ $ Taught by XXXX, Professor of XXXX, Duke Kunshan University. \\ Note by XXXXX. \textbf{Page \thepage\ of \pageref*{LastPage}}}
+
+\section{Section}
+
+\subsection{Subsection}
+
+\begin{defi}{Example Definition}{ex1}
+Example Definition
+\end{defi}
+
+\begin{thm}{Example Theorem}{ex2}
+Example Theorem
+\end{thm}
+
+\begin{lem}{Example Lemma}{ex3}
+Example Lemma
+\end{lem}
+
+\coro Example corollary.
+
+\begin{proof} Some proof.
+
+Some more proof.
+\end{proof}
+
+Refer: Definition \ref{df:ex1}, Theorem \ref{th:ex2}, Lemma \ref{le:ex3}
+
+\rbox{Some Concepts} Explanations xxxx.
+
+\note Some note.
+
+
+\end{document}
